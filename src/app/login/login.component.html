@@ -1,15 +1,34 @@
-<p>
-  <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+<mat-card class="container mat-elevation-z0">
+  <mat-card-title>
+    <mat-icon
+      class="icon"
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="sunny"
+    ></mat-icon>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <h2>Weather App</h2>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" placeholder="Placeholder" />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Placeholder" />
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+    </p>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="loginButton">
+        Login
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
