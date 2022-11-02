@@ -8,9 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WeatherComponent } from './weather/weather.component';
+import { WeatherSelectComponent } from './weather/weather-select/weather-select.component';
+import { WeatherFavouritesComponent } from './weather/weather-favourites/weather-favourites.component';
+import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, WeatherComponent],
+  declarations: [AppComponent, LoginComponent, WeatherComponent, WeatherSelectComponent, WeatherFavouritesComponent, WeatherDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
