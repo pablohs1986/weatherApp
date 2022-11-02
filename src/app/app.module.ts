@@ -11,9 +11,10 @@ import { WeatherComponent } from './weather/weather.component';
 import { WeatherSelectComponent } from './weather/weather-select/weather-select.component';
 import { WeatherFavouritesComponent } from './weather/weather-favourites/weather-favourites.component';
 import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, WeatherComponent, WeatherSelectComponent, WeatherFavouritesComponent, WeatherDetailComponent],
+  declarations: [AppComponent, LoginComponent, WeatherComponent, WeatherSelectComponent, WeatherFavouritesComponent, WeatherDetailComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -13,7 +13,7 @@ export class LoginService {
     new User('user4', '12345678'),
   ];
 
-  isUserAuthenticated = false;
+  isUserAuthenticated = true; // TODO: cambiar para prod
 
   constructor() {}
 
