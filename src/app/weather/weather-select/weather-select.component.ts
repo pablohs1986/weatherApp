@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { City } from 'src/app/models/city.model';
+import { WeatherService } from '../weather.service';
 
 @Component({
   selector: 'app-weather-select',
@@ -8,23 +10,43 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrls: ['./weather-select.component.css'],
 })
 export class WeatherSelectComponent implements OnInit {
-  myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+  formControl = new FormControl<string | City>('');
+  cities: City[] = [];
+  filteredCities: Observable<City[]>;
+  selectedCity: City;
 
-  constructor() {}
+  constructor(private weatherService: WeatherService) {}
+
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.fetchCities();
+    this.initAutocomplete();
+  }
+
+  fetchCities() {
+    this.weatherService.fetchCities();
+    this.cities = this.weatherService.cities;
+  }
+
+  initAutocomplete() {
+    this.filteredCities = this.formControl.valueChanges.pipe(
       startWith(''),
-      map((value) => this._filter(value || ''))
+      map((value) => {
+        const name = typeof value === 'string' ? value : value?.name;
+        return name ? this._filter(name as string) : this.cities.slice();
+      })
     );
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  selectCity(city: City): string {
+    this.selectedCity = city;
+    return city && city.name ? city.name : '';
+  }
 
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+  private _filter(name: string): City[] {
+    const filterValue = name.toLowerCase();
+
+    return this.cities.filter((city) =>
+      city.name.toLowerCase().includes(filterValue)
     );
   }
 }

@@ -1,24 +1,23 @@
-<form class="example-form">
-  <mat-card>
-    <mat-card-content>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Select a city</mat-label>
+<mat-card>
+  <mat-card-content>
+    <form>
+      <mat-form-field class="selectForm" appearance="outline">
+        <mat-label>Search for a city</mat-label>
         <input
           type="text"
-          aria-label="Number"
           matInput
-          [formControl]="myControl"
+          [formControl]="formControl"
           [matAutocomplete]="auto"
         />
-        <mat-autocomplete #auto="matAutocomplete">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="selectCity">
           <mat-option
-            *ngFor="let option of filteredOptions | async"
+            *ngFor="let option of filteredCities | async"
             [value]="option"
           >
-            {{ option }}
+            {{ option.name }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </mat-card-content>
-  </mat-card>
-</form>
+    </form>
+  </mat-card-content>
+</mat-card>

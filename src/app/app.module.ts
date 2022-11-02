@@ -12,9 +12,18 @@ import { WeatherSelectComponent } from './weather/weather-select/weather-select.
 import { WeatherFavouritesComponent } from './weather/weather-favourites/weather-favourites.component';
 import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, WeatherComponent, WeatherSelectComponent, WeatherFavouritesComponent, WeatherDetailComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    WeatherComponent,
+    WeatherSelectComponent,
+    WeatherFavouritesComponent,
+    WeatherDetailComponent,
+    HeaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +31,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
