@@ -1,1 +1,24 @@
-<p>weather-select works!</p>
+<form class="example-form">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Select a city</mat-label>
+        <input
+          type="text"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</form>
