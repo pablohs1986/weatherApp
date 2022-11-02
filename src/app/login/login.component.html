@@ -7,28 +7,53 @@
       fontIcon="sunny"
     ></mat-icon>
   </mat-card-title>
-  <mat-card-subtitle>
+  <mat-card-subtitle class="subtitle">
     <h2>Weather App</h2>
   </mat-card-subtitle>
   <mat-card-content>
-    <p>
-      <mat-form-field appearance="fill">
+    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+      <mat-form-field appearance="fill" class="form-group">
         <mat-label>Username</mat-label>
-        <input matInput type="text" placeholder="Placeholder" />
+        <input
+          matInput
+          class="form-control"
+          name="name"
+          type="text"
+          placeholder="Username"
+          required
+          ngModel
+        />
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field appearance="fill">
+      <br />
+      <mat-form-field appearance="fill" class="form-group">
         <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Placeholder" />
+        <input
+          matInput
+          class="form-control"
+          name="password"
+          type="password"
+          placeholder="Password"
+          required
+          ngModel
+        />
         <mat-icon matSuffix>password</mat-icon>
       </mat-form-field>
-    </p>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" class="loginButton">
-        Login
-      </button>
-    </mat-card-actions>
+      <div class="alert alert-danger" *ngIf="isError">
+        <p class="errorMessage">{{ errorMessage }}</p>
+      </div>
+      <hr />
+      <mat-card-actions>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          class="loginButton"
+          [disabled]="!loginForm.valid"
+        >
+          Login
+        </button>
+      </mat-card-actions>
+    </form>
   </mat-card-content>
 </mat-card>
