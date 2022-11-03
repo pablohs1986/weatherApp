@@ -8,11 +8,13 @@
 
 .cardContainer {
   text-align: center;
-  background-color: #f5f5f5;
+  background-color: white;
+  padding: 40px;
 }
 
 .subtitle {
   padding-bottom: 5px;
+  color: #673ab7;
 }
 
 .icon {

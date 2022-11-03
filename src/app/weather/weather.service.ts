@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject, tap } from 'rxjs';
 import { City } from '../models/city.model';
 import { Coord } from '../models/coord.model';
 
@@ -8,7 +8,11 @@ import { Coord } from '../models/coord.model';
   providedIn: 'root',
 })
 export class WeatherService implements OnInit {
+  private API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+  private API_KEY = '5b4a5fb7fff1a8f5a3c0cd68dc4e9a5b';
   cities: City[] = [];
+  selectedCity: City;
+  selectedCitySubject = new Subject<City>();
 
   constructor(private http: HttpClient) {}
 
@@ -33,6 +37,24 @@ export class WeatherService implements OnInit {
           )
         );
       });
+      this.orderCitiesByName();
     });
+  }
+
+  /**
+   * Sort the array of cities alphabetically
+   */
+  orderCitiesByName() {
+    this.cities = this.cities.sort((a, b) => (a.name < b.name ? -1 : 1));
+  }
+
+  setSelectedCity(city: City) {
+    this.selectedCity = city;
+    this.selectedCitySubject.next(city);
+  }
+
+  getWeatherInSelectedCity() {
+    let urlRequest = `${this.API_URL}?id=${this.selectedCity.id}&appid=${this.API_KEY}&units=metric`;
+    return this.http.get(urlRequest);
   }
 }

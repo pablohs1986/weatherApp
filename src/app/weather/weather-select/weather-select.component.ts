@@ -13,7 +13,6 @@ export class WeatherSelectComponent implements OnInit {
   formControl = new FormControl<string | City>('');
   cities: City[] = [];
   filteredCities: Observable<City[]>;
-  selectedCity: City;
 
   constructor(private weatherService: WeatherService) {}
 
@@ -37,8 +36,7 @@ export class WeatherSelectComponent implements OnInit {
     );
   }
 
-  selectCity(city: City): string {
-    this.selectedCity = city;
+  setCityInSelect(city: City): string {
     return city && city.name ? city.name : '';
   }
 
@@ -48,5 +46,13 @@ export class WeatherSelectComponent implements OnInit {
     return this.cities.filter((city) =>
       city.name.toLowerCase().includes(filterValue)
     );
+  }
+
+  onSelectCity(city: City) {
+    this.weatherService.setSelectedCity(city);
+  }
+
+  onClear() {
+    this.formControl.reset();
   }
 }

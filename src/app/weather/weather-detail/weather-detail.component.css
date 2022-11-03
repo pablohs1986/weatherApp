@@ -1,0 +1,27 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.weather-message {
+  font-size: 20px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.weather-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.weather-icon {
+  position: relative;
+  top: -5px;
+}
+
+.custom-card {
+  margin: 0px;
+  padding-top: 0px;
+}
+
+.custom-field {
+  margin: 0px;
+  padding: 0px;
+}

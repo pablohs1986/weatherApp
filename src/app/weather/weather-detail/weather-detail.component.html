@@ -1,1 +1,44 @@
-<p>weather-detail works!</p>
+<mat-card class="mat-elevation-z0 custom-card">
+  <div *ngIf="selectedCity === undefined">
+    <mat-card-title class="weather-message">
+      Search for a city to see its weather
+      <mat-progress-bar
+        mode="indeterminate"
+        *ngIf="isLoading"
+      ></mat-progress-bar>
+    </mat-card-title>
+  </div>
+
+  <div *ngIf="selectedCity !== undefined">
+    <mat-card-title class="weather-title">
+      {{ selectedCity.name }}
+
+      <div class="row">
+        <p class="text-center custom-field" style="font-size: 70px">
+          <img [src]="iconSrc" class="weather-icon" />{{
+            weatherInSelectedCity.temp
+          }}º
+        </p>
+      </div>
+      <div class="row">
+        <p
+          class="text-center custom-field"
+          style="font-size: 16px; font-weight: bold"
+        >
+          {{ weatherInSelectedCity.main }}
+        </p>
+        <p
+          class="text-center custom-field"
+          style="font-size: 16px; font-weight: bold"
+        >
+          Máx. {{ weatherInSelectedCity.tempMax }}º Mín.
+          {{ weatherInSelectedCity.tempMax }}º
+        </p>
+        <p class="text-center custom-field" style="font-size: 14px">
+          {{ weatherInSelectedCity.description | titlecase }}
+        </p>
+      </div>
+    </mat-card-title>
+    <mat-card-content> </mat-card-content>
+  </div>
+</mat-card>
