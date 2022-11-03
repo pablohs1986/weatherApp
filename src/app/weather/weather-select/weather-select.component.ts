@@ -21,6 +21,9 @@ export class WeatherSelectComponent implements OnInit {
     this.initAutocomplete();
   }
 
+  /**
+   * Take the cities of service
+   */
   fetchCities() {
     this.weatherService.fetchCities();
     this.cities = this.weatherService.cities;
@@ -36,10 +39,6 @@ export class WeatherSelectComponent implements OnInit {
     );
   }
 
-  setCityInSelect(city: City): string {
-    return city && city.name ? city.name : '';
-  }
-
   private _filter(name: string): City[] {
     const filterValue = name.toLowerCase();
 
@@ -48,6 +47,14 @@ export class WeatherSelectComponent implements OnInit {
     );
   }
 
+  setCityInSelect(city: City): string {
+    return city && city.name ? city.name : '';
+  }
+
+  /**
+   * Use the weather service to set the selected city as selected in the service.
+   * Also add that city to the list of favorites.
+   */
   onSelectCity(city: City) {
     this.weatherService.setSelectedCity(city);
     this.weatherService.addFavourite(city);

@@ -21,6 +21,9 @@ export class WeatherFavouritesComponent implements OnInit {
     this.onAddCityToFavourites();
   }
 
+  /**
+   * Use the weather service to add the selected city to the list of favorites
+   */
   onAddCityToFavourites() {
     this.favouritesSubscription =
       this.weatherService.favouritesSubject.subscribe(
@@ -33,6 +36,10 @@ export class WeatherFavouritesComponent implements OnInit {
       );
   }
 
+  /**
+   * Use the weather service to delete the selected cities from favorites list,
+   * and return the list to view mode.
+   */
   onDeleteFavourites() {
     this.weatherService.deleteFavouriteSelection(this.selectedFavourites);
     this.toggleEdit();
@@ -42,6 +49,9 @@ export class WeatherFavouritesComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
 
+  /**
+   * Use the weather service to set the selected city as selected in the service
+   */
   onSelectCity(city: City) {
     this.weatherService.setSelectedCity(city);
   }

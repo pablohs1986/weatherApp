@@ -50,11 +50,18 @@ export class WeatherService implements OnInit {
     this.cities = this.cities.sort((a, b) => (a.name < b.name ? -1 : 1));
   }
 
+  /**
+   * Set the city that receives as selected city and notify it to the observer
+   * @param city 
+   */
   setSelectedCity(city: City) {
     this.selectedCity = city;
     this.selectedCitySubject.next(city);
   }
 
+  /**
+   * Make a request to Open Weather Map to fetch weather data for the selected city.
+   */
   getWeatherInSelectedCity() {
     let urlRequest = `${this.API_URL}?id=${this.selectedCity.id}&appid=${this.API_KEY}&units=metric`;
     return this.http.get(urlRequest);

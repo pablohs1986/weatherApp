@@ -18,6 +18,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Try to login the user. If the credentials are correct, they are redirected
+   * to /home. Otherwise, an error is displayed.
+   * @param loginForm
+   */
   onSubmit(loginForm: NgForm) {
     let user: User = new User(loginForm.value.name, loginForm.value.password);
 

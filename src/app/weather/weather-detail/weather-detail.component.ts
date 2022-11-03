@@ -29,6 +29,9 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Center the map taking into account the latitude and longitude of the selected city
+   */
   centerMapOnCity() {
     this.center = {
       lat: +this.selectedCity.coord.lat,
@@ -36,6 +39,9 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
     };
   }
 
+  /**
+   * Method that takes from the weather service the weather data for the selected city
+   */
   onGetWeatherInSelectedCity() {
     this.isLoading = true;
     this.weatherService.getWeatherInSelectedCity().subscribe(
