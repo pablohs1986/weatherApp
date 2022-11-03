@@ -15,6 +15,8 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
   weatherInSelectedCity: Weather;
   isLoading = false;
   iconSrc: string;
+  zoom = 12;
+  center: google.maps.LatLngLiteral;
 
   constructor(private weatherService: WeatherService) {}
 
@@ -23,7 +25,15 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
       this.weatherService.selectedCitySubject.subscribe((city: City) => {
         this.selectedCity = city;
         this.onGetWeatherInSelectedCity();
+        this.centerMapOnCity();
       });
+  }
+
+  centerMapOnCity() {
+    this.center = {
+      lat: +this.selectedCity.coord.lat,
+      lng: +this.selectedCity.coord.lon,
+    };
   }
 
   onGetWeatherInSelectedCity() {

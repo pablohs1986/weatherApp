@@ -33,7 +33,7 @@ export class WeatherService implements OnInit {
             city.name,
             city.state,
             city.country,
-            new Coord(city.lon, city.lat)
+            new Coord(city.coord.lon, city.coord.lat)
           )
         );
       });

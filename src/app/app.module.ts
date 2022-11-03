@@ -13,6 +13,7 @@ import { WeatherFavouritesComponent } from './weather/weather-favourites/weather
 import { WeatherDetailComponent } from './weather/weather-detail/weather-detail.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
