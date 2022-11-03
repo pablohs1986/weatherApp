@@ -35,4 +35,8 @@ export class LoginService {
         user.password === userToFind.password ? true : false;
     }
   }
+
+  logout() {
+    this.isUserAuthenticated = false;
+  }
 }
