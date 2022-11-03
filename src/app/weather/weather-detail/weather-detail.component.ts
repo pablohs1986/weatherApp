@@ -15,7 +15,7 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
   weatherInSelectedCity: Weather;
   isLoading = false;
   iconSrc: string;
-  zoom = 12;
+  zoom = 14;
   center: google.maps.LatLngLiteral;
 
   constructor(private weatherService: WeatherService) {}
