@@ -39,13 +39,15 @@
         </p>
       </div>
     </mat-card-title>
-    <div class="map">
-      <google-map
-        height="250px"
-        width="45vw"
-        [zoom]="zoom"
-        [center]="center"
-      ></google-map>
-    </div>
+    <mat-card-content class="content">
+      <div class="map">
+        <google-map
+          height="275px"
+          width="100%"
+          [zoom]="zoom"
+          [center]="center"
+        ></google-map>
+      </div>
+    </mat-card-content>
   </div>
 </mat-card>
