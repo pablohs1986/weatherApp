@@ -1,1 +1,15 @@
+.mat-pseudo-checkbox::after {
+  color: #673ab7;
+}
 
+.align-right {
+  float: right;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: red;
+}
+
+::ng-deep .mat-option-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: red;
+}

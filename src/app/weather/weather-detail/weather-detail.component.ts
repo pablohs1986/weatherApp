@@ -40,7 +40,6 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.weatherService.getWeatherInSelectedCity().subscribe(
       (response: any) => {
-        console.log(response);
         this.weatherInSelectedCity = new Weather(
           response.weather[0].id,
           response.weather[0].description,
@@ -50,7 +49,6 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
           response.main.temp_max,
           response.main.temp_min
         );
-        console.log(this.weatherInSelectedCity);
 
         this.iconSrc = `http://openweathermap.org/img/wn/${this.weatherInSelectedCity.icon}@2x.png`;
         this.isLoading = false;

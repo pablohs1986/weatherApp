@@ -13,6 +13,8 @@ export class WeatherService implements OnInit {
   cities: City[] = [];
   selectedCity: City;
   selectedCitySubject = new Subject<City>();
+  favourites: City[] = [];
+  favouritesSubject = new Subject<City[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -56,5 +58,40 @@ export class WeatherService implements OnInit {
   getWeatherInSelectedCity() {
     let urlRequest = `${this.API_URL}?id=${this.selectedCity.id}&appid=${this.API_KEY}&units=metric`;
     return this.http.get(urlRequest);
+  }
+
+  fetchFavourites() {
+    return this.favourites.slice();
+  }
+
+  /**
+   * Add the city you receive to favorites if it is not in them.
+   * @param city
+   */
+  addFavourite(city: City) {
+    let isCityFavourite = this.favourites.some((c) => c.id === city.id);
+
+    if (isCityFavourite === false) {
+      this.favourites.push(city);
+      this.favouritesSubject.next(this.favourites.slice());
+    }
+  }
+
+  /**
+   * Removes the array of cities it receives from the array of favorites
+   * @param favouriteSelection
+   */
+  deleteFavouriteSelection(favouriteSelection: City[]) {
+    favouriteSelection.forEach((f) => this.deleteFavourite(f.id));
+    this.favouritesSubject.next(this.favourites.slice());
+  }
+
+  /**
+   * Removes the city with the recived id from the favorites array
+   * @param id
+   */
+  deleteFavourite(id: number) {
+    let cityIndex = this.favourites.findIndex((c) => c.id === id);
+    this.favourites.splice(cityIndex, 1);
   }
 }

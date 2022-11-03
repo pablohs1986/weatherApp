@@ -1,1 +1,75 @@
-lista
+<!-- List during view mode -->
+<mat-action-list *ngIf="!isEdit">
+  <ng-container *ngIf="favourites.length === 0">
+    <p>
+      You don't have favorites yet. The cities you search for will be added
+      automatically
+    </p>
+  </ng-container>
+
+  <ng-container *ngIf="favourites.length > 0">
+    <button
+      mat-list-item
+      (click)="onSelectCity(city)"
+      *ngFor="let city of favourites"
+    >
+      {{ city.name }}
+    </button>
+
+    <mat-action-list>
+      <button
+        *ngIf="!isEdit"
+        mat-flat-button
+        color="primary"
+        (click)="toggleEdit()"
+        class="align-right"
+        matTooltip="Edit the list of your favorite cities"
+        matTooltipPosition="below"
+      >
+        Edit
+        <mat-icon matSuffix>edit</mat-icon>
+      </button>
+    </mat-action-list>
+  </ng-container>
+</mat-action-list>
+
+<!-- List during edit mode -->
+<mat-selection-list
+  *ngIf="isEdit"
+  #favouritesList
+  [(ngModel)]="selectedFavourites"
+>
+  <mat-list-option *ngFor="let city of favourites" [value]="city">
+    {{ city.name }}
+  </mat-list-option>
+
+  <mat-action-list>
+    <ng-container
+      *ngIf="isEdit && favouritesList.selectedOptions.selected.length === 0"
+    >
+      <p class="align-right" style="font-weight: bold; padding-top: 4px">
+        Select the cities you want to remove
+      </p>
+    </ng-container>
+
+    <ng-container
+      *ngIf="isEdit && favouritesList.selectedOptions.selected.length > 0"
+    >
+      <button
+        mat-flat-button
+        (click)="onDeleteFavourites()"
+        color="warn"
+        class="align-right"
+        matTooltip="Remove selected cities"
+        matTooltipPosition="below"
+      >
+        Delete
+        <mat-icon matSuffix>delete</mat-icon>
+      </button>
+      <button mat-flat-button (click)="toggleEdit()" class="align-right">
+        Cancel
+        <mat-icon matSuffix>cancel</mat-icon>
+      </button>
+    </ng-container>
+  </mat-action-list>
+</mat-selection-list>

@@ -50,6 +50,7 @@ export class WeatherSelectComponent implements OnInit {
 
   onSelectCity(city: City) {
     this.weatherService.setSelectedCity(city);
+    this.weatherService.addFavourite(city);
   }
 
   onClear() {
