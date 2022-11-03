@@ -6,6 +6,9 @@ export class Weather {
     public icon: string,
     public temp: number,
     public tempMax: number,
-    public tempMin: number
+    public tempMin: number,
+    public feelsLike: number,
+    public humidity: number,
+    public pressure: number
   ) {}
 }

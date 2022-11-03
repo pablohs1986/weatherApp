@@ -47,7 +47,10 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
           response.weather[0].icon,
           response.main.temp,
           response.main.temp_max,
-          response.main.temp_min
+          response.main.temp_min,
+          response.main.feels_like,
+          response.main.humidity,
+          response.main.pressure
         );
 
         this.iconSrc = `http://openweathermap.org/img/wn/${this.weatherInSelectedCity.icon}@2x.png`;

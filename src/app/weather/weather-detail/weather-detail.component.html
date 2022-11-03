@@ -23,19 +23,24 @@
       <div class="row">
         <p
           class="text-center custom-field"
-          style="font-size: 16px; font-weight: bold"
+          style="font-size: 18px; font-weight: bold"
         >
           {{ weatherInSelectedCity.main }}
         </p>
         <p
           class="text-center custom-field"
-          style="font-size: 16px; font-weight: bold"
+          style="font-size: 18px; font-weight: bold"
         >
           Máx. {{ weatherInSelectedCity.tempMax }}º Mín.
           {{ weatherInSelectedCity.tempMax }}º
         </p>
-        <p class="text-center custom-field" style="font-size: 14px">
-          {{ weatherInSelectedCity.description | titlecase }}
+        <p class="text-center custom-field" style="font-size: 16px">
+          Humidity {{ weatherInSelectedCity.humidity }}% Pressure
+          {{ weatherInSelectedCity.pressure }} hPa
+        </p>
+        <p class="text-center custom-field" style="font-size: 16px">
+          {{ weatherInSelectedCity.description | titlecase }}, feels like
+          {{ weatherInSelectedCity.feelsLike }}º
         </p>
       </div>
     </mat-card-title>
